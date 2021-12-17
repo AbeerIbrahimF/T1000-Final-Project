@@ -75,15 +75,24 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         }
         cell.userImageView.layer.cornerRadius = cell.userImageView.frame.width / 2
     
-        //user name
+        //user data
         cell.userNameLabel.text = post.owner.firstName + " " + post.owner.lastName
+        cell.likesNumberLabel.text = String(post.likes)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
+        return 500
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedPost = posts[indexPath.row]
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "PostDetailsVC") as! PostDetailsVC
+        vc.post = selectedPost
+        present(vc, animated: true, completion: nil)
     }
     
 }
