@@ -8,13 +8,14 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-
+import NVActivityIndicatorView
 
 class PostDetailsVC: UIViewController {
 
     var post: Post!
     var comments : [Comment] = []
     // MARK: OUTLETS
+    @IBOutlet weak var loaderView: NVActivityIndicatorView!
     @IBOutlet weak var commentsTableView: UITableView!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -43,6 +44,9 @@ class PostDetailsVC: UIViewController {
         userNameLabel.text = post.owner.firstName + " " + post.owner.lastName
         postTextLabel.text = post.text
         likesNumberLabel.text = String(post.likes)
+        userImageView.setImageFromStringURL(stringURL: post.owner.picture)
+        userImageView.circularImage()
+        postImageView.setImageFromStringURL(stringURL: post.image)
         
          //post comments
         let appId = "61b8cf3213a2bd2db557e7d8"
@@ -52,8 +56,10 @@ class PostDetailsVC: UIViewController {
         let headers: HTTPHeaders = [
             "app-id" : appId
         ]
-
+        
+        loaderView.startAnimating()
         AF.request(url, headers: headers).responseJSON { response in
+            self.loaderView.stopAnimating()
             let jesonData = JSON(response.value)
             let data = jesonData["data"]
             let decoder = JSONDecoder()
@@ -85,10 +91,18 @@ extension PostDetailsVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as! CommentCell
-
-        cell.commentMessageLabel.text = comments[indexPath.row].message
+        let currentComment = comments[indexPath.row]
+        
+        cell.userNameLabel.text = currentComment.owner.firstName + " " + currentComment.owner.lastName
+        cell.userImageView.setImageFromStringURL(stringURL: currentComment.owner.picture)
+        cell.userImageView.circularImage()
+        cell.commentMessageLabel.text = currentComment.message
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 156
     }
 
 }

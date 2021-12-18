@@ -8,9 +8,11 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import NVActivityIndicatorView
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var LoaderView: NVActivityIndicatorView!
     @IBOutlet weak var postsTableView: UITableView!
     
     var posts: [Post] = []
@@ -27,8 +29,9 @@ class ViewController: UIViewController {
         let headers: HTTPHeaders = [
             "app-id" : appId
         ]
-        
+        LoaderView.startAnimating()
         AF.request(url, headers: headers).responseJSON { response in
+            self.LoaderView.stopAnimating()
             let jesonData = JSON(response.value)
             let data = jesonData["data"]
             let decoder = JSONDecoder()
@@ -59,21 +62,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         // post image to url
         let imageStringURL = post.image
-        if let url = URL(string: imageStringURL){
-            if let imageData = try? Data(contentsOf: url){
-                cell.postImageView.image = UIImage(data: imageData)
-            }
-        
-        }
+        cell.postImageView.setImageFromStringURL(stringURL: imageStringURL)
         
         //user image to url
         let userImageString = post.owner.picture
-        if let url = URL(string: userImageString) {
-            if let imageData = try? Data(contentsOf: url){
-                cell.userImageView.image = UIImage(data: imageData)
-            }
-        }
-        cell.userImageView.layer.cornerRadius = cell.userImageView.frame.width / 2
+        cell.userImageView.setImageFromStringURL(stringURL: userImageString)
+        cell.userImageView.circularImage()
     
         //user data
         cell.userNameLabel.text = post.owner.firstName + " " + post.owner.lastName
