@@ -10,15 +10,13 @@ import UIKit
 class PostCell: UITableViewCell {
 
     
-    @IBOutlet weak var backView: UIView!{
+    
+    @IBOutlet weak var userStackView: UIStackView!{
         didSet{
-            backView.layer.shadowColor = UIColor.gray.cgColor
-            backView.layer.shadowOpacity = 0.3
-            backView.layer.shadowOffset = CGSize(width: 0, height: 10)
-            backView.layer.shadowRadius = 10
-            backView.layer.cornerRadius = 7
+            self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(userStackViewTapped)))
         }
     }
+    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var likesNumberLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -34,5 +32,12 @@ class PostCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    // MARK: Actions
+    @objc func userStackViewTapped() {
+        NotificationCenter.default.post(name: NSNotification.Name("userStackViewTapped"), object: nil,userInfo: ["cell" : self])
+    }
 
 }
+
+
+

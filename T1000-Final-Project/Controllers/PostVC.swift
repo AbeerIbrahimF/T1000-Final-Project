@@ -10,7 +10,7 @@ import Alamofire
 import SwiftyJSON
 import NVActivityIndicatorView
 
-class ViewController: UIViewController {
+class PostVC: UIViewController {
 
     @IBOutlet weak var LoaderView: NVActivityIndicatorView!
     @IBOutlet weak var postsTableView: UITableView!
@@ -22,6 +22,9 @@ class ViewController: UIViewController {
         postsTableView.dataSource = self
         postsTableView.delegate = self
         super.viewDidLoad()
+        //Notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(userProfileTapped), name: NSNotification.Name("userStackViewTapped"), object: nil)
+        
         // Do any additional setup after loading the view.
         let appId = "61b8cf3213a2bd2db557e7d8"
         let url = "https://dummyapi.io/data/v1/post"
@@ -45,10 +48,26 @@ class ViewController: UIViewController {
             
         }
     }
+    
+    @objc func userProfileTapped(notification: Notification) {
+        if let cell = notification.userInfo?["cell"] as? UITableViewCell {
+            if let indexPath = postsTableView.indexPath(for: cell){
+                let post = posts[indexPath.row]
+                let vc = storyboard?.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileVC
+                
+                vc.user = post.owner
+                present(vc, animated: true, completion: nil)
+            }
+            
+        }
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileVC
+        present(vc, animated: true, completion: nil)
+        
+    }
 
 }
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension PostVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
