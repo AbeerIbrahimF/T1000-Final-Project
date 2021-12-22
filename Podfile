@@ -9,5 +9,6 @@ target 'T1000-Final-Project' do
     pod 'Alamofire', '~> 5.4'
     pod 'SwiftyJSON', '~> 4.0'
     pod 'NVActivityIndicatorView'
+    pod 'TextFieldEffects'
 
 end

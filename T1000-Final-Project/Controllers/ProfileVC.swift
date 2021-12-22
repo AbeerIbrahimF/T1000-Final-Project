@@ -28,26 +28,11 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        
-        let appId = "61b8cf3213a2bd2db557e7d8"
-        let url = "https://dummyapi.io/data/v1/user/\(user.id)"
-        
-        let headers: HTTPHeaders = [
-            "app-id" : appId
-        ]
         LoaderView.startAnimating()
-        AF.request(url, headers: headers).responseJSON { response in
+        UserAPI.getUserInfo(id: user.id) { userResponse in
+            self.user = userResponse
+            self.setUI()
             self.LoaderView.stopAnimating()
-            let jesonData = JSON(response.value)
-            let decoder = JSONDecoder()
-            
-            do{
-                self.user = try decoder.decode(User.self, from: jesonData.rawData())
-                self.setUI()
-            }catch let error {
-                print(error)
-            }
-            
         }
 
         
@@ -56,7 +41,7 @@ class ProfileVC: UIViewController {
     
     func setUI(){
         nameLabel.text? = user.firstName + " " + user.lastName
-        profileImage.setImageFromStringURL(stringURL: user.picture)
+        profileImage.setImageFromStringURL(stringURL: user.picture!)
         phoneLabel.text = user.phone
         countryLabel.text = user.location?.country
         genderLabel.text = user.gender

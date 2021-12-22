@@ -26,27 +26,13 @@ class PostVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(userProfileTapped), name: NSNotification.Name("userStackViewTapped"), object: nil)
         
         // Do any additional setup after loading the view.
-        let appId = "61b8cf3213a2bd2db557e7d8"
-        let url = "https://dummyapi.io/data/v1/post"
-        
-        let headers: HTTPHeaders = [
-            "app-id" : appId
-        ]
         LoaderView.startAnimating()
-        AF.request(url, headers: headers).responseJSON { response in
+        PostAPI.getAllPosts { response in
+            self.posts = response
             self.LoaderView.stopAnimating()
-            let jesonData = JSON(response.value)
-            let data = jesonData["data"]
-            let decoder = JSONDecoder()
-            
-            do{
-                self.posts = try decoder.decode([Post].self, from: data.rawData())
-                self.postsTableView.reloadData()
-            }catch let error {
-                print(error)
-            }
-            
+            self.postsTableView.reloadData()
         }
+        
     }
     
     @objc func userProfileTapped(notification: Notification) {
@@ -85,7 +71,7 @@ extension PostVC: UITableViewDataSource, UITableViewDelegate {
         
         //user image to url
         let userImageString = post.owner.picture
-        cell.userImageView.setImageFromStringURL(stringURL: userImageString)
+        cell.userImageView.setImageFromStringURL(stringURL: userImageString!)
         cell.userImageView.circularImage()
     
         //user data

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		01B48BFBFEE2164587FA742C /* Pods_T1000_Final_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17A1BF27BCF814F8CEAAC632 /* Pods_T1000_Final_Project.framework */; };
+		2318DADA2773A889003E67D9 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2318DAD92773A889003E67D9 /* UserAPI.swift */; };
+		2318DADC2773A894003E67D9 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2318DADB2773A894003E67D9 /* API.swift */; };
+		2318DADE2773BFB2003E67D9 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2318DADD2773BFB2003E67D9 /* RegisterVC.swift */; };
+		231AB93927729A49002CCD65 /* PostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AB93827729A49002CCD65 /* PostAPI.swift */; };
 		232CF1B9276E5FAE00706AD4 /* UIImage+StringUrlToImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CF1B8276E5FAE00706AD4 /* UIImage+StringUrlToImage.swift */; };
 		237E1D4B2770F8AC00CB1E66 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237E1D4A2770F8AC00CB1E66 /* ProfileVC.swift */; };
 		237E1D4D27710DC700CB1E66 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237E1D4C27710DC700CB1E66 /* Location.swift */; };
@@ -28,6 +32,10 @@
 
 /* Begin PBXFileReference section */
 		17A1BF27BCF814F8CEAAC632 /* Pods_T1000_Final_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_T1000_Final_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2318DAD92773A889003E67D9 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		2318DADB2773A894003E67D9 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		2318DADD2773BFB2003E67D9 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		231AB93827729A49002CCD65 /* PostAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAPI.swift; sourceTree = "<group>"; };
 		232CF1B8276E5FAE00706AD4 /* UIImage+StringUrlToImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+StringUrlToImage.swift"; sourceTree = "<group>"; };
 		237E1D4A2770F8AC00CB1E66 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		237E1D4C27710DC700CB1E66 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -62,6 +70,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		231AB93727729A14002CCD65 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				231AB93827729A49002CCD65 /* PostAPI.swift */,
+				2318DAD92773A889003E67D9 /* UserAPI.swift */,
+				2318DADB2773A894003E67D9 /* API.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		232CF1B7276E5F5A00706AD4 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +109,7 @@
 		23DDDD34276A8A1B005E2EF1 /* T1000-Final-Project */ = {
 			isa = PBXGroup;
 			children = (
+				231AB93727729A14002CCD65 /* Networking */,
 				232CF1B7276E5F5A00706AD4 /* Utilities */,
 				23DDDD4B276A8AAB005E2EF1 /* Models */,
 				23DDDD4A276A8AA2005E2EF1 /* Views */,
@@ -111,6 +130,7 @@
 				23DDDD39276A8A1B005E2EF1 /* PostVC.swift */,
 				23C587F4276D06B100F9BD45 /* PostDetailsVC.swift */,
 				237E1D4A2770F8AC00CB1E66 /* ProfileVC.swift */,
+				2318DADD2773BFB2003E67D9 /* RegisterVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -272,14 +292,18 @@
 				232CF1B9276E5FAE00706AD4 /* UIImage+StringUrlToImage.swift in Sources */,
 				23DDDD36276A8A1B005E2EF1 /* AppDelegate.swift in Sources */,
 				23817847276BA2CA00260981 /* User.swift in Sources */,
+				2318DADE2773BFB2003E67D9 /* RegisterVC.swift in Sources */,
 				23C587F9276D283100F9BD45 /* Comment.swift in Sources */,
 				23DDDD38276A8A1B005E2EF1 /* SceneDelegate.swift in Sources */,
 				23C587FF276D2F2D00F9BD45 /* CommentCell.swift in Sources */,
 				23DDDD4D276A8AF0005E2EF1 /* Post.swift in Sources */,
+				2318DADA2773A889003E67D9 /* UserAPI.swift in Sources */,
+				231AB93927729A49002CCD65 /* PostAPI.swift in Sources */,
 				23DDDD51276A8D0F005E2EF1 /* PostCell.swift in Sources */,
 				237E1D4B2770F8AC00CB1E66 /* ProfileVC.swift in Sources */,
 				237E1D5127710EB900CB1E66 /* ShadowView.swift in Sources */,
 				237E1D4D27710DC700CB1E66 /* Location.swift in Sources */,
+				2318DADC2773A894003E67D9 /* API.swift in Sources */,
 				23C587F5276D06B200F9BD45 /* PostDetailsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

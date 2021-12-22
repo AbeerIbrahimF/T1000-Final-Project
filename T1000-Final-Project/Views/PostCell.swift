@@ -10,10 +10,9 @@ import UIKit
 class PostCell: UITableViewCell {
 
     
-    
     @IBOutlet weak var userStackView: UIStackView!{
         didSet{
-            self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(userStackViewTapped)))
+            userStackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(userStackViewTapped)))
         }
     }
     @IBOutlet weak var backView: UIView!

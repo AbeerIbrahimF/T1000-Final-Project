@@ -36,34 +36,16 @@ class PostDetailsVC: UIViewController {
         userNameLabel.text = post.owner.firstName + " " + post.owner.lastName
         postTextLabel.text = post.text
         likesNumberLabel.text = String(post.likes)
-        userImageView.setImageFromStringURL(stringURL: post.owner.picture)
+        userImageView.setImageFromStringURL(stringURL: post.owner.picture!)
         userImageView.circularImage()
         postImageView.setImageFromStringURL(stringURL: post.image)
         
          //post comments
-        let appId = "61b8cf3213a2bd2db557e7d8"
-//        let url = "https://dummyapi.io/data/v1/post/60d21af267d0d8992e610b8d/comment"
-        let url = "https://dummyapi.io/data/v1/post/\(post.id)/comment"
-
-        let headers: HTTPHeaders = [
-            "app-id" : appId
-        ]
-        
         loaderView.startAnimating()
-        AF.request(url, headers: headers).responseJSON { response in
+        PostAPI.getPostComments(id: post.id) { commentResponse in
+            self.comments = commentResponse
+            self.commentsTableView.reloadData()
             self.loaderView.stopAnimating()
-            let jesonData = JSON(response.value)
-            let data = jesonData["data"]
-            let decoder = JSONDecoder()
-            
-            do{
-                self.comments = try decoder.decode([Comment].self, from: data.rawData())
-                self.commentsTableView.reloadData()
-            }catch let error {
-                print(error)
-            }
-            
-
         }
         
         
@@ -86,7 +68,7 @@ extension PostDetailsVC: UITableViewDelegate, UITableViewDataSource {
         let currentComment = comments[indexPath.row]
         
         cell.userNameLabel.text = currentComment.owner.firstName + " " + currentComment.owner.lastName
-        cell.userImageView.setImageFromStringURL(stringURL: currentComment.owner.picture)
+        cell.userImageView.setImageFromStringURL(stringURL: currentComment.owner.picture!)
         cell.userImageView.circularImage()
         cell.commentMessageLabel.text = currentComment.message
 

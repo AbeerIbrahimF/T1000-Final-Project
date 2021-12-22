@@ -4,23 +4,27 @@ PODS:
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
   - SwiftyJSON (4.3.0)
+  - TextFieldEffects (1.6.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.4)
   - NVActivityIndicatorView
   - SwiftyJSON (~> 4.0)
+  - TextFieldEffects
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - NVActivityIndicatorView
     - SwiftyJSON
+    - TextFieldEffects
 
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: 7c986ac3bf7b601cca5e58b22a1a831f5e42b3da
+PODFILE CHECKSUM: fd58eebc20e27a42e3ade4cf91526875b34d6434
 
 COCOAPODS: 1.11.2
