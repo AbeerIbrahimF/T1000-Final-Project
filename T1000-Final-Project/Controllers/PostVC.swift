@@ -6,19 +6,25 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 import NVActivityIndicatorView
 
 class PostVC: UIViewController {
 
+    @IBOutlet weak var hiLabel: UILabel!
     @IBOutlet weak var LoaderView: NVActivityIndicatorView!
     @IBOutlet weak var postsTableView: UITableView!
     
     var posts: [Post] = []
-    
+    var loggedInUser: User?
    
     override func viewDidLoad() {
+        //check if user is logged in or a guest
+        if let user = loggedInUser{
+            hiLabel.text = "Hi, \(user.firstName)!"
+        }else {
+            hiLabel.isHidden = true
+        }
+        
         postsTableView.dataSource = self
         postsTableView.delegate = self
         super.viewDidLoad()

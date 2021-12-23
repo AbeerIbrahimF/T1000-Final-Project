@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 import NVActivityIndicatorView
 
 class PostDetailsVC: UIViewController {

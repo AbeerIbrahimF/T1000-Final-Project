@@ -23,6 +23,10 @@ class RegisterVC: UIViewController {
     }
     
     // MARK: ACTIONS
+    @IBAction func loginButtonClicked(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+    
     @IBAction func registerButtonClicked(_ sender: Any) {
        
         UserAPI.registerNewUser(firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, email: emailTextField.text!) { user, errorMessage in
