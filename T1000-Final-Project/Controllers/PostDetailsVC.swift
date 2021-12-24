@@ -11,7 +11,9 @@ import NVActivityIndicatorView
 class PostDetailsVC: UIViewController {
 
     var post: Post!
-    var comments : [Comment] = []
+    var comments: [Comment] = []
+    var loggedInUser: User?
+    
     // MARK: OUTLETS
     @IBOutlet weak var loaderView: NVActivityIndicatorView!
     @IBOutlet weak var commentsTableView: UITableView!
@@ -22,6 +24,7 @@ class PostDetailsVC: UIViewController {
     @IBOutlet weak var likesNumberLabel: UILabel!
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var commentTextField: UITextField!
     
     // MARK: LIFE CYCLE METHODS
     
@@ -39,18 +42,31 @@ class PostDetailsVC: UIViewController {
         postImageView.setImageFromStringURL(stringURL: post.image)
         
          //post comments
+        getPostComments()
+
+    }
+    
+    func getPostComments(){
         loaderView.startAnimating()
         PostAPI.getPostComments(id: post.id) { commentResponse in
             self.comments = commentResponse
             self.commentsTableView.reloadData()
             self.loaderView.stopAnimating()
         }
-        
-        
-        
     }
+    
     @IBAction func closeButtonClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func sendButtonClicked(_ sender: Any) {
+        let message = commentTextField.text!
+        
+        if let user = loggedInUser {
+            PostAPI.addNewComment(postId: post.id, userId: user.id, message: message) {
+                self.getPostComments()
+                self.commentTextField.text = ""
+            }
+        }
     }
     
 }
@@ -66,7 +82,10 @@ extension PostDetailsVC: UITableViewDelegate, UITableViewDataSource {
         let currentComment = comments[indexPath.row]
         
         cell.userNameLabel.text = currentComment.owner.firstName + " " + currentComment.owner.lastName
-        cell.userImageView.setImageFromStringURL(stringURL: currentComment.owner.picture!)
+        if let userImage = currentComment.owner.picture{
+            cell.userImageView.setImageFromStringURL(stringURL: userImage)
+        }
+        
         cell.userImageView.circularImage()
         cell.commentMessageLabel.text = currentComment.message
 

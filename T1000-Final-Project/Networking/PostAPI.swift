@@ -53,4 +53,29 @@ class PostAPI: API {
 
         }
     }
+    
+    static func addNewComment(postId: String, userId: String, message: String, completionHandler: @escaping () -> ()){
+        
+        let url = "\(baseURL)/comment/create"
+        let params = [
+            "post" : postId,
+            "owner" : userId,
+            "message" : message
+        ]
+        
+        AF.request(url,method: .post, parameters: params,encoder: JSONParameterEncoder.default, headers: headers).validate().responseJSON { response in
+            
+            switch response.result {
+            case .success:
+                    completionHandler()
+                
+            case .failure(let error):
+                print(error)
+            }
+            
+            
+            
+        }
+        
+    }
 }

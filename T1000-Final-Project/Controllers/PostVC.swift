@@ -97,6 +97,7 @@ extension PostVC: UITableViewDataSource, UITableViewDelegate {
         
         let vc = storyboard?.instantiateViewController(withIdentifier: "PostDetailsVC") as! PostDetailsVC
         vc.post = selectedPost
+        vc.loggedInUser = loggedInUser
         present(vc, animated: true, completion: nil)
     }
     
