@@ -10,16 +10,17 @@ import NVActivityIndicatorView
 
 class PostVC: UIViewController {
 
+    // MARK: OUTLETS
     @IBOutlet weak var hiLabel: UILabel!
     @IBOutlet weak var LoaderView: NVActivityIndicatorView!
     @IBOutlet weak var postsTableView: UITableView!
     
     var posts: [Post] = []
-    var loggedInUser: User?
-   
+    
+    // MARK: LIFE CYCLE METHODS
     override func viewDidLoad() {
         //check if user is logged in or a guest
-        if let user = loggedInUser{
+        if let user = UserManager.loggedInUser{
             hiLabel.text = "Hi, \(user.firstName)!"
         }else {
             hiLabel.isHidden = true
@@ -41,6 +42,12 @@ class PostVC: UIViewController {
         
     }
     
+    // MARK: ACTIONS
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "logoutSegue"{
+            UserManager.loggedInUser = nil
+        }
+    }
     @objc func userProfileTapped(notification: Notification) {
         if let cell = notification.userInfo?["cell"] as? UITableViewCell {
             if let indexPath = postsTableView.indexPath(for: cell){
@@ -97,7 +104,6 @@ extension PostVC: UITableViewDataSource, UITableViewDelegate {
         
         let vc = storyboard?.instantiateViewController(withIdentifier: "PostDetailsVC") as! PostDetailsVC
         vc.post = selectedPost
-        vc.loggedInUser = loggedInUser
         present(vc, animated: true, completion: nil)
     }
     

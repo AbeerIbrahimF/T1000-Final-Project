@@ -351,7 +351,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdy-MM-rxa">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdy-MM-rxa" customClass="ShadowView" customModule="T1000_Final_Project" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="188"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="allPostsHeader" translatesAutoresizingMaskIntoConstraints="NO" id="f1E-fE-ho1">
@@ -369,7 +369,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="rectangle.portrait.and.arrow.right" catalog="system"/>
                                         <connections>
-                                            <segue destination="CXA-PD-GCX" kind="show" id="6Wn-iT-nBv"/>
+                                            <segue destination="CXA-PD-GCX" kind="show" identifier="logoutSegue" id="6Wn-iT-nBv"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -711,6 +711,7 @@
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="filled" title="send">
+                                                            <fontDescription key="titleFontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
                                                             <color key="baseForegroundColor" systemColor="systemYellowColor"/>
                                                             <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
@@ -798,6 +799,7 @@
                         <outlet property="loaderView" destination="eeh-1E-Yhz" id="OoZ-zz-bFP"/>
                         <outlet property="postImageView" destination="h8v-X7-8D0" id="5Mf-xK-c4P"/>
                         <outlet property="postTextLabel" destination="IFD-fm-qON" id="ljJ-t4-8HP"/>
+                        <outlet property="sendCommentSV" destination="GOC-74-Hgw" id="YnE-vM-96A"/>
                         <outlet property="userImageView" destination="KHw-Ci-RBR" id="tKR-zb-Fr2"/>
                         <outlet property="userNameLabel" destination="D5J-DR-Abk" id="MIv-jB-b7x"/>
                     </connections>

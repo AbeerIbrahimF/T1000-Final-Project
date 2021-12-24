@@ -12,7 +12,7 @@ class PostDetailsVC: UIViewController {
 
     var post: Post!
     var comments: [Comment] = []
-    var loggedInUser: User?
+    
     
     // MARK: OUTLETS
     @IBOutlet weak var loaderView: NVActivityIndicatorView!
@@ -25,11 +25,17 @@ class PostDetailsVC: UIViewController {
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var commentTextField: UITextField!
+    @IBOutlet weak var sendCommentSV: UIStackView!
     
     // MARK: LIFE CYCLE METHODS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UserManager.loggedInUser == nil {
+            sendCommentSV.isHidden = true
+        }
+        
         commentsTableView.delegate = self
         commentsTableView.dataSource = self
         closeButton.layer.cornerRadius = closeButton.frame.width / 2
@@ -45,6 +51,7 @@ class PostDetailsVC: UIViewController {
         getPostComments()
 
     }
+    // MARK: ACTIONS
     
     func getPostComments(){
         loaderView.startAnimating()
@@ -61,7 +68,7 @@ class PostDetailsVC: UIViewController {
     @IBAction func sendButtonClicked(_ sender: Any) {
         let message = commentTextField.text!
         
-        if let user = loggedInUser {
+        if let user = UserManager.loggedInUser {
             PostAPI.addNewComment(postId: post.id, userId: user.id, message: message) {
                 self.getPostComments()
                 self.commentTextField.text = ""
