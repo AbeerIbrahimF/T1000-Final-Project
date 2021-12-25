@@ -11,10 +11,13 @@ import SwiftyJSON
 
 class PostAPI: API {
     
-    static func getAllPosts(completionHandler: @escaping ([Post]) -> ()){
+    static func getAllPosts(tag: String?, completionHandler: @escaping ([Post]) -> ()){
         
-        let url = "\(baseURL)/post"
-        
+        var url = "\(baseURL)/post"
+        if var myTag = tag {
+            myTag = myTag.trimmingCharacters(in: .whitespaces)
+            url = "\(baseURL)/tag/\(myTag)/post"
+        }
         
         AF.request(url, headers: headers).responseJSON { response in
             
@@ -78,4 +81,27 @@ class PostAPI: API {
         }
         
     }
+    
+    static func getAllTags(completionHandler: @escaping ([String]) -> ()){
+        
+        let url = "\(baseURL)/tag"
+        
+        
+        AF.request(url, headers: headers).responseJSON { response in
+            
+            let jesonData = JSON(response.value)
+            let data = jesonData["data"]
+            let decoder = JSONDecoder()
+            
+            do{
+                let tags = try decoder.decode([String].self, from: data.rawData())
+                completionHandler(tags)
+                
+            }catch let error {
+                print(error)
+            }
+            
+        }
+    }
+    
 }

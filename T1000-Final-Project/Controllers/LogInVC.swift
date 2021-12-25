@@ -35,9 +35,9 @@ class LogInVC: UIViewController {
                 
             }else {
                 if let loggedInUser = user{
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "PostVC") as! PostVC
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "mainTabBarController")
                     UserManager.loggedInUser = loggedInUser
-                    self.present(vc, animated: true, completion: nil)
+                    self.present(vc!, animated: true, completion: nil)
                 }
             }
         }

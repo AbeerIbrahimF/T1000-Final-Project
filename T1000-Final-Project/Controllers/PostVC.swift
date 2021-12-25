@@ -14,8 +14,10 @@ class PostVC: UIViewController {
     @IBOutlet weak var hiLabel: UILabel!
     @IBOutlet weak var LoaderView: NVActivityIndicatorView!
     @IBOutlet weak var postsTableView: UITableView!
+    @IBOutlet weak var tagLabel: UILabel!
     
     var posts: [Post] = []
+    var tag: String?
     
     // MARK: LIFE CYCLE METHODS
     override func viewDidLoad() {
@@ -26,6 +28,12 @@ class PostVC: UIViewController {
             hiLabel.isHidden = true
         }
         
+        if let myTag = tag {
+            tagLabel.text = " #\(myTag) "
+        }else {
+            tagLabel.isHidden = true
+        }
+        
         postsTableView.dataSource = self
         postsTableView.delegate = self
         super.viewDidLoad()
@@ -34,7 +42,7 @@ class PostVC: UIViewController {
         
         // Do any additional setup after loading the view.
         LoaderView.startAnimating()
-        PostAPI.getAllPosts { response in
+        PostAPI.getAllPosts(tag: tag) { response in
             self.posts = response
             self.LoaderView.stopAnimating()
             self.postsTableView.reloadData()
@@ -43,9 +51,13 @@ class PostVC: UIViewController {
     }
     
     // MARK: ACTIONS
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "logoutSegue"{
-            UserManager.loggedInUser = nil
+    @IBAction func exitButtonClicked(_ sender: Any) {
+        if tag == nil{
+            self.dismiss(animated: true) {
+                UserManager.loggedInUser = nil
+            }
+        }else {
+            self.dismiss(animated: true)
         }
     }
     @objc func userProfileTapped(notification: Notification) {

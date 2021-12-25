@@ -22,6 +22,8 @@
 		23C587F5276D06B200F9BD45 /* PostDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C587F4276D06B100F9BD45 /* PostDetailsVC.swift */; };
 		23C587F9276D283100F9BD45 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C587F8276D283100F9BD45 /* Comment.swift */; };
 		23C587FF276D2F2D00F9BD45 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C587FE276D2F2D00F9BD45 /* CommentCell.swift */; };
+		23D8365227775E2800158738 /* TagsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D8365127775E2800158738 /* TagsVC.swift */; };
+		23D8365427775FCF00158738 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D8365327775FCF00158738 /* TagCell.swift */; };
 		23DDDD36276A8A1B005E2EF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DDDD35276A8A1B005E2EF1 /* AppDelegate.swift */; };
 		23DDDD38276A8A1B005E2EF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DDDD37276A8A1B005E2EF1 /* SceneDelegate.swift */; };
 		23DDDD3A276A8A1B005E2EF1 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DDDD39276A8A1B005E2EF1 /* PostVC.swift */; };
@@ -48,6 +50,8 @@
 		23C587F4276D06B100F9BD45 /* PostDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsVC.swift; sourceTree = "<group>"; };
 		23C587F8276D283100F9BD45 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		23C587FE276D2F2D00F9BD45 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		23D8365127775E2800158738 /* TagsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsVC.swift; sourceTree = "<group>"; };
+		23D8365327775FCF00158738 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		23DDDD32276A8A1A005E2EF1 /* T1000-Final-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "T1000-Final-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23DDDD35276A8A1B005E2EF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23DDDD37276A8A1B005E2EF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				237E1D4A2770F8AC00CB1E66 /* ProfileVC.swift */,
 				2318DADD2773BFB2003E67D9 /* RegisterVC.swift */,
 				2367A1B72774F49E00E704A0 /* LogInVC.swift */,
+				23D8365127775E2800158738 /* TagsVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -147,6 +152,7 @@
 				23DDDD50276A8D0F005E2EF1 /* PostCell.swift */,
 				23C587FE276D2F2D00F9BD45 /* CommentCell.swift */,
 				237E1D5027710EB900CB1E66 /* ShadowView.swift */,
+				23D8365327775FCF00158738 /* TagCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -305,8 +311,10 @@
 				23C587FF276D2F2D00F9BD45 /* CommentCell.swift in Sources */,
 				2367A1B82774F49E00E704A0 /* LogInVC.swift in Sources */,
 				23DDDD4D276A8AF0005E2EF1 /* Post.swift in Sources */,
+				23D8365227775E2800158738 /* TagsVC.swift in Sources */,
 				2318DADA2773A889003E67D9 /* UserAPI.swift in Sources */,
 				231AB93927729A49002CCD65 /* PostAPI.swift in Sources */,
+				23D8365427775FCF00158738 /* TagCell.swift in Sources */,
 				23DDDD51276A8D0F005E2EF1 /* PostCell.swift in Sources */,
 				237E1D4B2770F8AC00CB1E66 /* ProfileVC.swift in Sources */,
 				237E1D5127710EB900CB1E66 /* ShadowView.swift in Sources */,
