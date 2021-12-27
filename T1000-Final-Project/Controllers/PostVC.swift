@@ -18,6 +18,8 @@ class PostVC: UIViewController {
     
     var posts: [Post] = []
     var tag: String?
+    var page = 0
+    var total = 0
     
     // MARK: LIFE CYCLE METHODS
     override func viewDidLoad() {
@@ -41,13 +43,18 @@ class PostVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(userProfileTapped), name: NSNotification.Name("userStackViewTapped"), object: nil)
         
         // Do any additional setup after loading the view.
+        getPosts()
+        
+    }
+    
+    func getPosts(){
         LoaderView.startAnimating()
-        PostAPI.getAllPosts(tag: tag) { response in
-            self.posts = response
+        PostAPI.getAllPosts(page: page,tag: tag) { response, total in
+            self.total = total
+            self.posts.append(contentsOf: response)
             self.LoaderView.stopAnimating()
             self.postsTableView.reloadData()
         }
-        
     }
     
     // MARK: ACTIONS
@@ -117,6 +124,12 @@ extension PostVC: UITableViewDataSource, UITableViewDelegate {
         let vc = storyboard?.instantiateViewController(withIdentifier: "PostDetailsVC") as! PostDetailsVC
         vc.post = selectedPost
         present(vc, animated: true, completion: nil)
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == posts.count - 1 && posts.count < total {
+            page += 1
+            getPosts()
+        }
     }
     
 }
