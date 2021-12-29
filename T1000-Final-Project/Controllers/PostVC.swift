@@ -11,6 +11,8 @@ import NVActivityIndicatorView
 class PostVC: UIViewController {
 
     // MARK: OUTLETS
+    
+    @IBOutlet weak var addNewPostView: ShadowView!
     @IBOutlet weak var hiLabel: UILabel!
     @IBOutlet weak var LoaderView: NVActivityIndicatorView!
     @IBOutlet weak var postsTableView: UITableView!
@@ -23,11 +25,16 @@ class PostVC: UIViewController {
     
     // MARK: LIFE CYCLE METHODS
     override func viewDidLoad() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(newPostAdded), name: NSNotification.Name("NewPostAdded"), object: nil)
+        
+        addNewPostView.layer.cornerRadius = addNewPostView.layer.frame.width / 2
         //check if user is logged in or a guest
         if let user = UserManager.loggedInUser{
             hiLabel.text = "Hi, \(user.firstName)!"
         }else {
             hiLabel.isHidden = true
+            addNewPostView.isHidden = true
         }
         
         if let myTag = tag {
@@ -55,6 +62,12 @@ class PostVC: UIViewController {
             self.LoaderView.stopAnimating()
             self.postsTableView.reloadData()
         }
+    }
+    
+    @objc func newPostAdded() {
+        self.page = 0
+        self.posts = []
+        getPosts()
     }
     
     // MARK: ACTIONS
@@ -103,8 +116,10 @@ extension PostVC: UITableViewDataSource, UITableViewDelegate {
         
         //user image to url
         let userImageString = post.owner.picture
-        cell.userImageView.setImageFromStringURL(stringURL: userImageString!)
         cell.userImageView.circularImage()
+        if let image = userImageString {
+            cell.userImageView.setImageFromStringURL(stringURL: image)
+        }
     
         //user data
         cell.userNameLabel.text = post.owner.firstName + " " + post.owner.lastName
