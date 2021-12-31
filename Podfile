@@ -10,5 +10,7 @@ target 'T1000-Final-Project' do
     pod 'SwiftyJSON', '~> 4.0'
     pod 'NVActivityIndicatorView'
     pod 'TextFieldEffects'
+    pod 'IQKeyboardManagerSwift'
+    pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
 
 end

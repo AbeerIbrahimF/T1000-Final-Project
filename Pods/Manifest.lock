@@ -1,30 +1,46 @@
 PODS:
   - Alamofire (5.4.4)
+  - IQKeyboardManagerSwift (6.5.9)
   - NVActivityIndicatorView (5.1.1):
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
+  - Spring (1.0.6)
   - SwiftyJSON (4.3.0)
   - TextFieldEffects (1.6.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.4)
+  - IQKeyboardManagerSwift
   - NVActivityIndicatorView
+  - Spring (from `https://github.com/MengTo/Spring.git`)
   - SwiftyJSON (~> 4.0)
   - TextFieldEffects
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - IQKeyboardManagerSwift
     - NVActivityIndicatorView
     - SwiftyJSON
     - TextFieldEffects
 
+EXTERNAL SOURCES:
+  Spring:
+    :git: https://github.com/MengTo/Spring.git
+
+CHECKOUT OPTIONS:
+  Spring:
+    :commit: 50d92a5b9e08848387ae95bf44c6ad20834f7083
+    :git: https://github.com/MengTo/Spring.git
+
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
+  Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: fd58eebc20e27a42e3ade4cf91526875b34d6434
+PODFILE CHECKSUM: e87e49ae81476c6ca781a43e9d659adb71d70c74
 
 COCOAPODS: 1.11.2

@@ -7,16 +7,23 @@
 
 import UIKit
 import TextFieldEffects
+import Spring
 
 class LogInVC: UIViewController {
 
     // MARK: OUTLETS
+    @IBOutlet weak var welcomeLabel: SpringLabel!
     @IBOutlet weak var firstNameTextField: YoshikoTextField!
     @IBOutlet weak var lastNameTextField: YoshikoTextField!
+    @IBOutlet weak var loginButton: SpringButton!
     
     // MARK: LIFE CYCLE METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
+        welcomeLabel.animation = "fadeIn"
+        welcomeLabel.delay = 0.5
+        welcomeLabel.duration = 3
+        welcomeLabel.animate()
         firstNameTextField.text = "Abeer"
         lastNameTextField.text = "Beer"
         // Do any additional setup after loading the view.
