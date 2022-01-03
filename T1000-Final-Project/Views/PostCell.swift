@@ -10,12 +10,18 @@ import UIKit
 class PostCell: UITableViewCell {
 
     
+    @IBOutlet weak var tagsCollectionView: UICollectionView!{
+        didSet{
+            tagsCollectionView.delegate = self
+            tagsCollectionView.dataSource = self
+        }
+    }
     @IBOutlet weak var userStackView: UIStackView!{
         didSet{
             userStackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(userStackViewTapped)))
         }
     }
-    @IBOutlet weak var backView: UIView!
+//    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var likesNumberLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -38,5 +44,18 @@ class PostCell: UITableViewCell {
 
 }
 
+extension PostCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostTagCell", for: indexPath)
+        
+        return cell
+    }
+    
+    
+}
 
 

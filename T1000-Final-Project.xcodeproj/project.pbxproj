@@ -34,6 +34,7 @@
 		23DDDD42276A8A1C005E2EF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23DDDD40276A8A1C005E2EF1 /* LaunchScreen.storyboard */; };
 		23DDDD4D276A8AF0005E2EF1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DDDD4C276A8AF0005E2EF1 /* Post.swift */; };
 		23DDDD51276A8D0F005E2EF1 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DDDD50276A8D0F005E2EF1 /* PostCell.swift */; };
+		23F76A222783820300DBD809 /* PostTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F76A212783820300DBD809 /* PostTagCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		23DDDD43276A8A1C005E2EF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23DDDD4C276A8AF0005E2EF1 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		23DDDD50276A8D0F005E2EF1 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		23F76A212783820300DBD809 /* PostTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTagCell.swift; sourceTree = "<group>"; };
 		AA24F2366604DCF0D962BC28 /* Pods-T1000-Final-Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-T1000-Final-Project.release.xcconfig"; path = "Target Support Files/Pods-T1000-Final-Project/Pods-T1000-Final-Project.release.xcconfig"; sourceTree = "<group>"; };
 		F5ACF0ECCA5B01D64406EC65 /* Pods-T1000-Final-Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-T1000-Final-Project.debug.xcconfig"; path = "Target Support Files/Pods-T1000-Final-Project/Pods-T1000-Final-Project.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,6 +161,7 @@
 				23C587FE276D2F2D00F9BD45 /* CommentCell.swift */,
 				237E1D5027710EB900CB1E66 /* ShadowView.swift */,
 				23D8365327775FCF00158738 /* TagCell.swift */,
+				23F76A212783820300DBD809 /* PostTagCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				237E1D5127710EB900CB1E66 /* ShadowView.swift in Sources */,
 				237E1D4D27710DC700CB1E66 /* Location.swift in Sources */,
 				2318DADC2773A894003E67D9 /* API.swift in Sources */,
+				23F76A222783820300DBD809 /* PostTagCell.swift in Sources */,
 				23C587F5276D06B200F9BD45 /* PostDetailsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
