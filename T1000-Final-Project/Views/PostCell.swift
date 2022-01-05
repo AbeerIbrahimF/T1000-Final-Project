@@ -9,7 +9,7 @@ import UIKit
 
 class PostCell: UITableViewCell {
 
-    
+    var tags: [String] = []
     @IBOutlet weak var tagsCollectionView: UICollectionView!{
         didSet{
             tagsCollectionView.delegate = self
@@ -46,12 +46,12 @@ class PostCell: UITableViewCell {
 
 extension PostCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return tags.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostTagCell", for: indexPath)
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostTagCell", for: indexPath) as! PostTagCell
+        cell.tagNameLabel.text = "#\(tags[indexPath.row])"
         return cell
     }
     

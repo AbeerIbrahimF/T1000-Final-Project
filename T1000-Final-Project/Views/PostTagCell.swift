@@ -8,5 +8,6 @@
 import UIKit
 
 class PostTagCell: UICollectionViewCell {
+    @IBOutlet weak var tagNameLabel: UILabel!
     
 }

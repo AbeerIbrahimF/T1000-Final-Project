@@ -125,11 +125,13 @@ extension PostVC: UITableViewDataSource, UITableViewDelegate {
         cell.userNameLabel.text = post.owner.firstName + " " + post.owner.lastName
         cell.likesNumberLabel.text = String(post.likes)
         
+        cell.tags = post.tags ?? []
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 575
+        return 500
         
     }
     
