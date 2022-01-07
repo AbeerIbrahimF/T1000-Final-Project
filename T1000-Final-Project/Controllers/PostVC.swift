@@ -33,7 +33,7 @@ class PostVC: UIViewController {
         if let user = UserManager.loggedInUser{
             hiLabel.text = "Hi, \(user.firstName)!"
         }else {
-            hiLabel.isHidden = true
+            hiLabel.text = "Hey Friend!"
             addNewPostView.isHidden = true
         }
         
