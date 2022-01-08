@@ -20,7 +20,7 @@ class NewPostVC: UIViewController {
     }
     @IBAction func AddNewPostButtonClicked(_ sender: Any) {
         if let user = UserManager.loggedInUser {
-            PostAPI.addNewPost(userId: user.id, text: textTextField.text!) {
+            PostAPI.addNewPost(imageURL: imageTextField?.text , userId: user.id, text: textTextField.text!) {
                 NotificationCenter.default.post(name: NSNotification.Name("NewPostAdded"), object: nil, userInfo: nil)
                 self.dismiss(animated: true, completion: nil)
             }

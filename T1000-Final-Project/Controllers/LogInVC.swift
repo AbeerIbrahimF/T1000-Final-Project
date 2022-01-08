@@ -25,7 +25,7 @@ class LogInVC: UIViewController {
         welcomeLabel.duration = 3
         welcomeLabel.animate()
         firstNameTextField.text = "Abeer"
-        lastNameTextField.text = "Beer"
+        lastNameTextField.text = "Ibrahim"
         // Do any additional setup after loading the view.
     }
     

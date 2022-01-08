@@ -25,6 +25,17 @@ class MyProfileVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if UserManager.loggedInUser == nil {
+            let alert = UIAlertController(title: "", message: "hello there, to view your profile you need to log in first", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "log in page", style: .default) { UIAlertAction in
+                self.dismiss(animated: true)
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "LogInVC")
+                self.present(vc!, animated: true)
+            }
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+        
         setupUI()
     }
     
@@ -46,6 +57,7 @@ class MyProfileVC: UIViewController {
         if let user = UserManager.loggedInUser{
             if let image = user.picture{
                 userImageView.setImageFromStringURL(stringURL: image)
+                userImageView.circularImage()
             }
             
             userNameLabel.text = user.firstName + " " + user.lastName

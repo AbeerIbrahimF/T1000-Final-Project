@@ -110,19 +110,21 @@ class PostAPI: API {
         }
     }
     
-    static func addNewPost(userId: String, text: String, completionHandler: @escaping () -> ()){
+    
+    static func addNewPost(imageURL: String?, userId: String, text: String, completionHandler: @escaping () -> ()){
         
         let url = "\(baseURL)/post/create"
         let params = [
             "owner" : userId,
-            "text" : text
+            "text" : text,
+            "image" : imageURL
         ]
         
         AF.request(url,method: .post, parameters: params,encoder: JSONParameterEncoder.default, headers: headers).validate().responseJSON { response in
             
             switch response.result {
             case .success:
-                    completionHandler()
+                completionHandler()
                 
             case .failure(let error):
                 print(error)
