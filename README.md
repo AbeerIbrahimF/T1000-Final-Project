@@ -5,7 +5,7 @@
 # Connect
 
 Connect is a social media app, and its primary purpose is to connect people and allow people to share their thoughts.
-This app is developed as the final project for Tuwaiq 1000 online Swift bootcamp using  [DummyAPI](https://dummyapi.io)
+This app is developed as the final project for [Tuwaiq 1000 online Swift bootcamp](https://satr.codes/courses/KiQGXOXbXw/view) using  [DummyAPI](https://dummyapi.io)
 
 
 ### How to use
