@@ -36,4 +36,4 @@ https://user-images.githubusercontent.com/71727778/148664527-e6254969-5b7a-4590-
 
 ## Acknowledgments
 
-* I would like to express my special thanks of gratitude to my trainer [@Yarob50](https://github.com/Yarob50) as well as Tuwaiq Academy for this wonderful opportunity
+* I would like to express my special thanks of gratitude to my instructor [@Yarob50](https://github.com/Yarob50) as well as Tuwaiq Academy for this wonderful opportunity
